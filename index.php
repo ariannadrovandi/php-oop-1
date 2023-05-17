@@ -1,5 +1,7 @@
 <?php
+    include __DIR__.'/Views/header.php';
     include __DIR__.'/Database/db.php';
+    
     // var_dump($movies);
 ?>
 
@@ -18,7 +20,6 @@
 <body>
     <main>
         <div class="container">
-            <h1>Movies</h1>
             <div class="row">
                 <?php foreach($movies as $movie) : ?>
                     <div class="col-6">
@@ -36,5 +37,10 @@
             </div>
         </div>
     </main>
+    <?php
+        include __DIR__.'/Views/footer.php';
+    ?>
 </body>
 </html>
+
+

@@ -17,7 +17,7 @@ class Movie{
     }
 
     public function getDetails(){
-        return "Title: $this->title Vote: $this->vote Genre: {$this->genre->name}";
+        return "Title: $this->title, Vote: $this->vote, Genre: {$this->genre->name}";
     }
 }
 
