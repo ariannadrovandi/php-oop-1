@@ -1,13 +1,6 @@
 <?php
-    include __DIR__.'/models/Movie.php';
-
-    $movies = [
-        new Movie('Pulp Fiction', 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9p10J9Xp7MuaVac56g8BwAuXEsA.jpg', '4.2', 'Thriller'),
-        new Movie('Via Col Vento', 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xRyW60TXvX7Q2HSbpz8nZxKaTkL.jpg', '8.6', 'Romantico'),
-        new Movie('Forrest Gump', 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pGZqc9jQ6F8klQZKm37NAAMH70o.jpg', '4.6', 'Drammatico'),
-        new Movie('Psycho', 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tdqX0MWaFHuGwUygYn7j6eluOdP.jpg', '9.4', 'Horror')
-    ]
-
+    include __DIR__.'/Database/db.php';
+    // var_dump($movies);
 ?>
 
 
@@ -17,22 +10,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Movies</title>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <?php for($i = 0; $i < count($movies); $i++){ ?>
-                    <ul>
-                        <li><?php echo $movies[$i]->title ?></li>
-                        <li><?php echo $movies[$i]->image ?></li>
-                        <li><?php echo $movies[$i]->vote ?></li>
-                        <li><?php echo $movies[$i]->genre ?></li>
-                    </ul>
-                <?php } ?>
+    <main>
+        <div class="container">
+            <h1>Movies</h1>
+            <div class="row">
+                <?php foreach($movies as $movie) : ?>
+                    <div class="col-6">
+                        <div class="card my-3">
+                            <div class="card-img-top">
+                                <img src="<?= $movie->image ?>" alt="<?= $movie->title?>">
+                            </div>
+                            <div class="card-body">
+                                <h2><?= $movie->title?></h2>
+                                <p><?= $movie->getDetails() ?></p> 
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
